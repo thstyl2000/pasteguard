@@ -3,6 +3,7 @@ import pkg from "../../package.json";
 import { getConfig } from "../config";
 import { getPIIDetector } from "../pii/detect";
 import { getAnthropicInfo } from "../providers/anthropic/client";
+import { getCodexInfo } from "../providers/codex/client";
 import { getLocalInfo } from "../providers/local";
 import { getOpenAIInfo } from "../providers/openai/client";
 
@@ -19,6 +20,9 @@ infoRoutes.get("/info", (c) => {
     },
     anthropic: {
       base_url: getAnthropicInfo(config.providers.anthropic).baseUrl,
+    },
+    codex: {
+      base_url: getCodexInfo(config.providers.codex).baseUrl,
     },
   };
 
